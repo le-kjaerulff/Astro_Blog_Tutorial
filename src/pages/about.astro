@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -13,6 +15,10 @@ const skills = ["Breathing", "Sitting", "Swimming", "Letting other people down",
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -22,13 +28,24 @@ const goal = 3;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
     <title>{pageTitle}</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+      color: var(--skillColor);
+      font-weight: var(--fontWeight);
+      text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
     <h1>{pageTitle}</h1>
-    <h2>... and my new Astro site which i am dumping right here on the lovely internet <3 </h2>
+    <h2>... and my new Astro site which i am dumping right here on the lovely internet</h2>
 
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I sort of built myself!</p>
 
@@ -44,7 +61,7 @@ const goal = 3;
     </ul>
     <p>My skills are:</p>
     <ul>
-        {skills.map((skill) => <li>{skill}</li>)}
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
 
     {happy && <p>I am happy to be learning Astro!</p>}
